@@ -11,7 +11,7 @@ use Redirect;
 use App\Repositories\ProjectsRepository;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\EditProjectRequest;
-
+use Carbon\Carbon;
 class ProjectsController extends Controller
 {
     protected $repo;
@@ -59,7 +59,8 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        $project = Auth::user()->projects()->find($id);
+//        return Carbon::createFromDate(1990,5,1)->age;
+        $project = Auth::user()->projects()->findOrFail($id);
         $toDoTasks = $project->tasks()->where('completed',0)->get();
         $doneTasks = $project->tasks()->where('completed',1)->get();
         $projects = Project::lists('name','id');

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3d559893ac8de21937cb18a69e77d74c",
-    "content-hash": "348ddc3c2b15b780875010c93f65ecf1",
+    "hash": "afad6210c5352d53fcb57e5977792285",
+    "content-hash": "85866bd6616dfbc258bc8cd17cdcc4a6",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2127,6 +2127,46 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "caouecs/laravel-lang",
+            "version": "3.0.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caouecs/Laravel-lang.git",
+                "reference": "e207b60cd6be3de4d6a0c285f413b05405a12082"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/caouecs/Laravel-lang/e207b60cd6be3de4d6a0c285f413b05405a12082.zip",
+                "reference": "e207b60cd6be3de4d6a0c285f413b05405a12082",
+                "shasum": ""
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.10"
+            },
+            "suggest": {
+                "overtrue/laravel-lang": "Command to add languages in your project"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "caouecs",
+                    "email": "caouecs@caouecs.net"
+                }
+            ],
+            "description": "Languages for Laravel",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm"
+            ],
+            "time": "2016-09-23 06:14:30"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",

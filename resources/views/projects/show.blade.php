@@ -1,4 +1,4 @@
-@extends('layouts/App')
+@extends('layouts/app')
 
 @section('content')
     <div class="container tasks-tabs">
@@ -19,6 +19,7 @@
                     <thead>@include('tasks/_createForm')</thead>
                     @foreach($toDoTasks as $toDoTask)
                         <tr>
+                            <td class="date-cell">{{ $toDoTask->updated_at->subWeek()->diffForHumans() }}</td>
                             <td class="first-cell">{{ $toDoTask->title }}</td>
                             <td class="icon-cell">@include('tasks/_checkForm')</td>
                             <td class="icon-cell">@include('tasks/_editForm')</td>

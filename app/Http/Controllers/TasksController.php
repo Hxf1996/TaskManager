@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Repositories\TasksRepository;
 use App\Task;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,10 @@ use App\Http\Requests\CreateTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 class TasksController extends Controller
 {
+    protected $task;
+    public function __construct(TasksRepository $task){
+        $this->task = $task;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -107,5 +112,14 @@ class TasksController extends Controller
     {
         Task::find($id)->delete();
         return Redirect::back();
+    }
+
+    public function charts(){
+        $total = $this->task->total();
+        $toDoCount = $this->task->toDoCount();
+        $doneCount = $this->task->doneCount();
+        $projects =  Project::with('tasks')->get();
+        $names = Project::lists('name');
+        return view('tasks.charts',compact('total','toDoCount','doneCount','names','projects'));
     }
 }

@@ -8,10 +8,10 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
-    <link href="//cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.css" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css')  }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
         body {
@@ -45,15 +45,16 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('tasks.index') }}">Home</a></li>
+                    <li><a href="{{ route('tasks.index') }}">所有任务</a></li>
+                    <li><a href="{{ route('tasks.charts') }}">图表统计</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/login') }}">登陆</a></li>
+                        <li><a href="{{ url('/register') }}">注册</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -61,7 +62,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>退出</a></li>
                             </ul>
                         </li>
                     @endif
@@ -71,9 +72,11 @@
     </nav>
 
     @yield('content')
-
+    <footer>
+        {{ $total }}|{{ $toDoCount }}|{{ $doneCount }}
+    </footer>
     <!-- JavaScripts -->
-    <script src="//cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     @yield('customjs')

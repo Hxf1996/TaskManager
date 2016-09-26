@@ -15,7 +15,8 @@ Route::get('/', 'HomeController@welcome');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
+Route::get('tasks/charts',['as'=> 'tasks.charts', 'uses'=> 'TasksController@charts']);
 
 Route::resource('projects','ProjectsController');
 Route::resource('tasks','TasksController');
