@@ -20,7 +20,7 @@
                     @foreach($toDoTasks as $toDoTask)
                         <tr>
                             <td class="date-cell">{{ $toDoTask->updated_at->subWeek()->diffForHumans() }}</td>
-                            <td class="first-cell">{{ $toDoTask->title }}</td>
+                            <td class="first-cell">{{ link_to_route('tasks.show',$toDoTask->title,$toDoTask->id) }}</td>
                             <td class="icon-cell">@include('tasks/_checkForm')</td>
                             <td class="icon-cell">@include('tasks/_editForm')</td>
                             <td class="icon-cell">@include('tasks/_deleteForm')</td>
