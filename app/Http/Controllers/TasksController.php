@@ -64,7 +64,8 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        return view('tasks.detail');
+        $task = Task::findOrFail($id);
+        return view('tasks.detail', compact('task'));
     }
 
     /**
@@ -112,6 +113,10 @@ class TasksController extends Controller
     {
         Task::find($id)->delete();
         return Redirect::back();
+    }
+
+    public function searchApi(){
+        return Auth::user()->tasks;
     }
 
     public function charts(){

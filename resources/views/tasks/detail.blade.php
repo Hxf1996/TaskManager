@@ -1,50 +1,18 @@
 @extends('layouts.app')
-
+@section('customHeader')
+    <meta name="token" id="token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
+@endsection
 @section('content')
 <div id="app" class="container">
-    <ul class="list-group">
-        <li class="list-group-item" v-for="step in steps">
-            @{{ step.name }}
-            <i class="fa fa-check pull-right" @click="complete(step)"></i>
-        </li>
-    </ul>
+    <h1 class="text-muted">{{ $task->title }}</h1>
 
-    <form @submit.prevent='addStep' class="form-inline">
-        <input type="text" v-model="newStep" class="form-control">
-        <button type="submit" class="btn btn-primary">添加步骤</button>
-    </form>
+    <step-list :steps="steps" @toggle="toggleCompletion" @remove="removeStep" @edit="editStep" @add="addStep" @complete="completeAll" type="remaings"></step-list>
 
-    @{{ $data | json }}
+    <step-list :steps="steps" @toggle="toggleCompletion" @remove="removeStep" @clear="clearAll" type="completed"></step-list>
 </div>
 @endsection
 
 @section('customjs')
-    <script src="{{ asset('js/vue.js') }}"></script>
-    <script>
-        new Vue({
-            el: '#app',
-            data:{
-                steps: [
-                    {
-                        name: 'fix bug',
-                        complete: false
-                    },
-                    {
-                        name: 'meeting',
-                        complete: false
-                    },
-                ],
-                newStep:''
-            },
-            methods:{
-                addStep: function(){
-                    this.steps.push({name: this.newStep, complete: false});
-                    this.newStep = '';
-                },
-                complete: function (step) {
-                    step.complete = true;
-                }
-            }
-        });
-    </script>
+    <script src="{{ asset('js/app.js') }}"></script>
 @endsection

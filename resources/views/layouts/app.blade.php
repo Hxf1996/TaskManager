@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    @yield('customHeader')
+    
     <title>Laravel</title>
 
     <!-- Fonts -->
@@ -49,6 +50,10 @@
                     <li><a href="{{ route('tasks.charts') }}">图表统计</a></li>
                 </ul>
 
+                @if (Auth::user())
+                <search></search>
+                @endif
+                
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
@@ -78,7 +83,7 @@
     <!-- JavaScripts -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script src="{{ asset('js/search.js') }}"></script>
     @yield('customjs')
 </body>
 </html>
